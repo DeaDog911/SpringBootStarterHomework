@@ -2,11 +2,13 @@ package org.deadog.springbootstarterhomework.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.deadog.springbootstarterhomework.model.dto.OrderDTO;
 import org.deadog.springbootstarterhomework.model.dto.UserDTO;
 import org.deadog.springbootstarterhomework.model.Order;
 import org.deadog.springbootstarterhomework.model.User;
 import org.deadog.springbootstarterhomework.repository.OrderRepository;
 import org.deadog.springbootstarterhomework.repository.UserRepository;
+import org.deadog.springbootstarterhomework.util.OrderMapper;
 import org.deadog.springbootstarterhomework.util.UserMapper;
 import org.springframework.stereotype.Service;
 
@@ -32,17 +34,6 @@ public class UserService {
 
     public UserDTO getUserById(Long id) {
         User user = userRepository.findById(id).orElse(null);
-        return UserMapper.convertToUserDTO(user);
-    }
-
-    @Transactional
-    public UserDTO getUserWithOrders(Long id) {
-        User user = userRepository.findById(id).orElse(null);
-        if (user == null)
-            return null;
-
-        List<Order> orders = orderRepository.findAllByUserId(id);
-        user.setOrders(orders);
         return UserMapper.convertToUserDTO(user);
     }
 

@@ -13,6 +13,7 @@ public class UserMapper {
 
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
+        userDTO.setName(user.getName());
         userDTO.setEmail(user.getEmail());
         if (user.getOrders() != null)
             userDTO.setOrders(user.getOrders().stream()
@@ -26,6 +27,7 @@ public class UserMapper {
 
         User user = new User();
         user.setId(userDTO.getId());
+        user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         if (userDTO.getOrders() != null)
             user.setOrders(userDTO.getOrders().stream()

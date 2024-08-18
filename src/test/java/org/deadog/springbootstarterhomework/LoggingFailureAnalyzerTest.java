@@ -5,12 +5,15 @@ import org.deadog.springbootstarterhomework.init.LoggingFailureAnalyzer;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.diagnostics.FailureAnalysis;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.test.context.TestPropertySource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
+@TestPropertySource(properties = "my-logging.enabled=true")
 class LoggingFailureAnalyzerTest {
     static class TestLoggingFailureAnalyzer extends LoggingFailureAnalyzer {
         @Override

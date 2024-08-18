@@ -1,6 +1,7 @@
 package org.deadog.springbootstarterhomework.api;
 
 import lombok.RequiredArgsConstructor;
+import org.deadog.springbootstarterhomework.model.dto.OrderDTO;
 import org.deadog.springbootstarterhomework.model.dto.UserDTO;
 import org.deadog.springbootstarterhomework.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -31,16 +32,6 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
         UserDTO user = userService.getUserById(id);
-        if (user != null) {
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
-
-    @GetMapping("/{id}/with-orders")
-    public ResponseEntity<UserDTO> getUserWithOrders(@PathVariable Long id) {
-        UserDTO user = userService.getUserWithOrders(id);
         if (user != null) {
             return ResponseEntity.ok(user);
         } else {
