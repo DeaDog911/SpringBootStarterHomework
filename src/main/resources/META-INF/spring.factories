@@ -1,0 +1,5 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  org.deadog.springbootstarterhomework.init.LoggingEnvironmentPostProcessor
+
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+  org.deadog.springbootstarterhomework.init.LoggingFailureAnalyzer

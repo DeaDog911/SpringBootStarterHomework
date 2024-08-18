@@ -1,10 +1,12 @@
 package org.deadog.springbootstarterhomework.api;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.deadog.springbootstarterhomework.exceptions.ApplicationException;
 import org.deadog.springbootstarterhomework.model.dto.OrderDTO;
 import org.deadog.springbootstarterhomework.service.OrderService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +29,7 @@ public class OrderController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<OrderDTO>> getAllOrders() {
+    public ResponseEntity<List<OrderDTO>> getAllOrders(HttpServletResponse response) {
         List<OrderDTO> orders = orderService.getAllOrders();
         return ResponseEntity.ok(orders);
     }
@@ -53,9 +55,9 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
+    public ResponseEntity<HttpStatusCode> deleteOrder(@PathVariable Long id) {
         orderService.deleteOrder(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }
 

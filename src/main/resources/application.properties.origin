@@ -1,0 +1,27 @@
+spring.application.name=SpringBootStarterHomework
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database=postgresql
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+
+my-logging.enabled=true
+my-logging.log-requests=true
+my-logging.log-responses=true
+my-logging.logging-methods=GET
+my-logging.log-level=WARN
+my-logging.log-request-format=Request: \
+  Method = #{#method}, \
+  URL = #{#url}, \
+  Locale = #{#locale}, \
+  Headers = [#{#headers}], \
+  Query Params: #{#queryString}
+
+my-logging.log-response-format=Response: \
+  Code = #{#responseCode}, \
+  Headers = [#{#headers}], \
+  Locale = #{#locale}, \
+  Processing time = #{#processingTime} ms
