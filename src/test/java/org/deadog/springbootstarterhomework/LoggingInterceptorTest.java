@@ -29,6 +29,7 @@ public class LoggingInterceptorTest {
     private LoggingProperties loggingProperties;
 
     private RequestLoggingInterceptor requestLoggingInterceptor;
+
     private ResponseLoggingInterceptor responseLoggingInterceptor;
 
     @BeforeEach
@@ -50,8 +51,8 @@ public class LoggingInterceptorTest {
         boolean result = requestLoggingInterceptor.preHandle(request, new MockHttpServletResponse(), null);
 
         assertTrue(result);
-        verify(loggingProperties).getLogRequestFormat();
-        verify(loggingProperties).getLogLevel();
+        verify(loggingProperties, times(1)).getLogRequestFormat();
+        verify(loggingProperties, times(1)).getLogLevel();
     }
 
     @Test
@@ -83,8 +84,8 @@ public class LoggingInterceptorTest {
         responseLoggingInterceptor.preHandle(request, response, null);
         responseLoggingInterceptor.afterCompletion(request, response, null, null);
 
-        verify(loggingProperties).getLogResponseFormat();
-        verify(loggingProperties).getLogLevel();
+        verify(loggingProperties, times(1)).getLogResponseFormat();
+        verify(loggingProperties, times(1)).getLogLevel();
     }
 
     @Test
